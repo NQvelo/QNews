@@ -23,13 +23,13 @@ const App = () => {
             <Feather name="home" size={20} color='black' />
           ),
         }} />
-        
-        <Tab.Screen name="Discover" component={Discover}  options={{
+      
+        {/* <Tab.Screen name="Discover" component={Discover}  options={{
          
           tabBarIcon: ({ size, color }) => (
             <Feather name="compass" size={20} color='black' />
           ),
-        }} />
+        }} /> */}
         
         <Tab.Screen name="Your Saved" component={AppHome}  options={{
           
