@@ -1,11 +1,11 @@
 import React from 'react'
 import {View, StyleSheet} from 'react-native';
 
-function Explore(props) {
+function Discover(props) {
 return <View style={styles.container}></View>;
 }
 const styles = StyleSheet.create({
  container: {},
 });
 
-export default Explore;
+export default Discover;
