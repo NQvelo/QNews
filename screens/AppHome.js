@@ -1,8 +1,10 @@
 import React, { useState, useEffect} from 'react'
-import { View, StyleSheet, FlatList, TouchableOpacity, Image, Text, ScrollView, Button } from 'react-native';
-import Header from '../components/Header';
+import { View, StyleSheet, FlatList, TouchableOpacity, Image, Text, ScrollView, Button, SectionList } from 'react-native';
+
+import SearchInput from '../components/SearchInput';
 import Loader from '../components/Loader'
-import Feather from 'react-native-vector-icons/Feather';import { SafeAreaView } from 'react-native-safe-area-context';
+
+import Feather from 'react-native-vector-icons/Feather';
 
 const AppHome = (navigation) => {
   
@@ -46,50 +48,58 @@ const AppHome = (navigation) => {
 
 
   return (
-    <SafeAreaView>
-       {isLoading ? <Loader /> : null}
+    <View style={{flex:1, backgroundColor:'white'}}>
      
-      <ScrollView>
-        <Header />
-        
-        <View style={styles.mainStyle}>
+     {isLoading ? <Loader /> : null}
+  
+      <View style={styles.mainStyle}>       
+        <FlatList
          
-          <View style={{ backgroundColor: 'black', width: '100%', height: 200, borderRadius: 20, }}/>
-           
-            <View style={styles.FNewsContainer}>
-              <Text style={styles.FNewsTxt}>Hottest News</Text>
-              <FlatList
-                style={{marginTop:5}}
-            showsHorizontalScrollIndicator='false'
-            // numColumns={2}
-            horizontal={true}
-            data={topHeadline}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item, index }) =>
-              <TouchableOpacity key={item.id}>
-                <View style={styles.viewItem}>
-                  <Image source={{ uri: item.urlToImage }} key={index} style={{ height: 120, borderRadius: 10 }} />
-                  <View style={styles.itemView}>
-                  <Text numberOfLines={1} style={styles.authorText}>{item.author}</Text>
-                  <Text numberOfLines={2} style={styles.textItem}>{item.title}</Text>
-                  </View>
-                  {/* <View style={{ backgroundColor: 'red', width: 20, height: 20, borderRadius: 50, }}>
-            
-             </View> */}
-                </View>
-              </TouchableOpacity>}
-          />
-            </View>
-            
-            <View style={styles.FNewsContainer} >
-              <Text style={styles.FNewsTxtsec}> Latest News</Text>
-              <FlatList
+           initialNumToRender={10}
+           maxToRenderPerBatch={10}
+              ListHeaderComponent={() => {
+              return (
+                <View style={{marginVertical:10}}>
               
-                style={{marginTop:5}}
+                  <SearchInput />
+                  <View style={{ backgroundColor: 'black', width: '100%', height: 200, borderRadius: 20, marginTop:30 }}/>
+      
+           <View style={styles.FNewsContainer}>
+           <Text style={styles.FNewsTxt}>Hottest News</Text>
+                    <FlatList
+                      initialNumToRender={10}
+                      maxToRenderPerBatch={10}
+                  style={{marginTop:5}}
+                      showsHorizontalScrollIndicator='false'
+                      
+              // numColumns={2}
+              horizontal={true}
+              data={topHeadline}
+                      keyExtractor={(item) => item.id}
+                      
+              renderItem={({ item, index }) =>
+                <TouchableOpacity key={item.id}>
+                  <View style={styles.viewItem}>
+                    <Image source={{ uri: item.urlToImage }} key={index} style={{ height: 120, borderRadius: 10 }} />
+                    <View style={styles.itemView}>
+                    <Text numberOfLines={1} style={styles.authorText}>{item.author}</Text>
+                    <Text numberOfLines={2} style={styles.textItem}>{item.title}</Text>
+                    </View>
+                    {/* <View style={{ backgroundColor: 'red', width: 20, height: 20, borderRadius: 50, }}>
+              
+               </View> */}
+                  </View>
+                </TouchableOpacity>}
+                    />
+                     </View>
+                  </View>
+            )
+          }}
+          
             showsVerticalScrollIndicator='false'
             data={feed}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item, index }) =>
+          keyExtractor={(item) => item.id}
+          renderItem={({ item, index }) =>
               <TouchableOpacity key={item.source.id}>
                 <View style={styles.viewItemone}>
                   <Image source={{ uri: item.urlToImage }} key={index} style={{ height: 120, borderRadius: 10 }} />
@@ -108,45 +118,31 @@ const AppHome = (navigation) => {
                     </View>
                   <Text numberOfLines={2} style={styles.textItem}>{item.title}</Text>
                   </View>
-                  {/* <View style={{ backgroundColor: 'red', width: 20, height: 20, borderRadius: 50, }}>
-            
-             </View> */}
+                  
                 </View>
-              </TouchableOpacity>}
+            </TouchableOpacity>
+            
+            }
           />
-    </View>
-
-        </View>
-        <Button
-  title="Go to Details... again"
-  onPress={() => navigation.push('Home')}
-/>
-          </ScrollView>
-        
-         
  
 
-   
-    </SafeAreaView>
+        </View>
+    </View>
     
   )
 };
 const styles = StyleSheet.create({
-  slideBar: {
-    height: 200,
-    margin: 5,
-    backgroundColor: 'grey',
-  },
+
   mainStyle: {
-    padding: 15,
+    paddingHorizontal: 15,
   },
   viewItem: {
     maxWidth: 180,
-    backgroundColor: "white",
     height: 230,
     margin: 10,
     borderRadius: 15,
-    backgroundColor: 'white',
+    borderWidth: 1,
+    borderColor:'#eaeaea',
     padding: 10,
   },
   textItem: {
@@ -165,6 +161,7 @@ color:'grey'
   },
   itemView: {
     marginTop:15,
+    
   },
   FNewsContainer: {
     marginTop:30,
@@ -182,11 +179,11 @@ color:'grey'
     color:'black'
   },
   viewItemone: {
+    borderColor:'#eaeaea',
     marginTop:10,
     width: '100%',
     height: 220,
-   
-    backgroundColor: "white",
+    borderWidth:1,
     height: 230,
   
     borderRadius: 15,
