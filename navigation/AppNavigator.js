@@ -6,8 +6,6 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-
-
 const Tab = createBottomTabNavigator();
 
 

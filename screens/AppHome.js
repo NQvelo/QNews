@@ -5,11 +5,12 @@ import SearchInput from '../components/SearchInput';
 import Loader from '../components/Loader'
 
 import Feather from 'react-native-vector-icons/Feather';
+import FeedNavigator from '../navigation/FeedNavigator';
 
-const AppHome = (navigation) => {
+
+const AppHome = ({navigation}) => {
   
   const [isLoading, setIsLoading] = useState(false);
- 
   const [feed, setFeed] = useState([]);
   const [topHeadline, setTopHeadline] = useState([]);
 
@@ -24,12 +25,6 @@ const AppHome = (navigation) => {
       });
   }
 
-  useEffect(() => {
-    getApiNutrit();
-  }, [])
-
-
-
   const topHeadlines = () => {
     setIsLoading(true);
     fetch("https://newsapi.org/v2/top-headlines?q=tech&sortBy=popularity&apiKey=2954e9a9ecc1447fb3aff06601dfedb5")
@@ -42,8 +37,11 @@ const AppHome = (navigation) => {
   }
 
   useEffect(() => {
+    getApiNutrit();
     topHeadlines();
   }, [])
+
+
 
 
 
@@ -60,7 +58,6 @@ const AppHome = (navigation) => {
               ListHeaderComponent={() => {
               return (
                 <View style={{marginVertical:10}}>
-              
                   <SearchInput />
                   <View style={{ backgroundColor: 'black', width: '100%', height: 200, borderRadius: 20, marginTop:30 }}/>
       
@@ -73,16 +70,17 @@ const AppHome = (navigation) => {
                       showsHorizontalScrollIndicator='false'
                       
               // numColumns={2}
-              horizontal={true}
+              horizontal
               data={topHeadline}
                       keyExtractor={(item) => item.id}
                       
               renderItem={({ item, index }) =>
-                <TouchableOpacity key={item.id}>
+                <TouchableOpacity key={item.id} onPress={() => navigation.navigate("statia", item)}>
                   <View style={styles.viewItem}>
                     <Image source={{ uri: item.urlToImage }} key={index} style={{ height: 120, borderRadius: 10 }} />
                     <View style={styles.itemView}>
-                    <Text numberOfLines={1} style={styles.authorText}>{item.author}</Text>
+                      <Text numberOfLines={1} style={styles.authorText}>{item.author == null ? <Text>No Writer</Text> : <>{item.author}</>}</Text>
+                      
                     <Text numberOfLines={2} style={styles.textItem}>{item.title}</Text>
                     </View>
                     {/* <View style={{ backgroundColor: 'red', width: 20, height: 20, borderRadius: 50, }}>
@@ -95,12 +93,14 @@ const AppHome = (navigation) => {
                   </View>
             )
           }}
-          
-            showsVerticalScrollIndicator='false'
-            data={feed}
+      
+          showsVerticalScrollIndicator='false'
+          data={feed}
           keyExtractor={(item) => item.id}
+          
           renderItem={({ item, index }) =>
-              <TouchableOpacity key={item.source.id}>
+            
+              <TouchableOpacity key={item.source.id} onPress={() => navigation.navigate("statia", item)}>
                 <View style={styles.viewItemone}>
                   <Image source={{ uri: item.urlToImage }} key={index} style={{ height: 120, borderRadius: 10 }} />
                   <View style={styles.itemView}>
@@ -108,18 +108,19 @@ const AppHome = (navigation) => {
                       <View style={{ flexDirection: 'row', width:130 }}>
                       <Feather name="feather" size={15} color='grey' />
                         {/* <View style={{backgroundColor:'black', width:15, height:15, borderRadius:10,}}/> */}
-                      <Text numberOfLines={1} style={styles.authorText}> {item.author}</Text>
+                      <Text numberOfLines={1} style={styles.authorText}>{item.author == null ? <Text> No Writer</Text> : <> {item.author == null ? <Text>No Writer</Text> : <>{item.author}</>}{item.author}</>}</Text>
                       </View>
                       <View style={{ flexDirection: 'row', marginLeft:30 }}>
                       <Feather name="calendar" size={15} color='grey' />
-                      <Text numberOfLines={1} style={styles.authordate}> {item.publishedAt}</Text>
+                      <Text numberOfLines={1} style={styles.authordate}>{item.publishedAt}</Text>
                       </View>
 
                     </View>
                   <Text numberOfLines={2} style={styles.textItem}>{item.title}</Text>
                   </View>
                   
-                </View>
+              </View>
+              
             </TouchableOpacity>
             
             }
