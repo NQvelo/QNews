@@ -1,24 +1,20 @@
-import {StyleSheet} from 'react-native'
-import React from 'react'
+import {StyleSheet} from 'react-native';
+import React from 'react';
 
-import { NavigationContainer } from '@react-navigation/native'
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import AppNavigator from './navigation/AppNavigator';
-import WelcomeNavigator from './navigation/WelcomeNavigator';
+import WelcomeNavigator from './src/navigation/WelcomeNavigator';
 
 const App = () => {
   return (
-    <NavigationContainer >
+    <NavigationContainer>
       {/* <AppNavigator/> */}
-      <WelcomeNavigator/>
+      <WelcomeNavigator />
     </NavigationContainer>
-  )
-}
+  );
+};
 
-const styles = StyleSheet.create({
- 
-})
-
+const styles = StyleSheet.create({});
 
 export default App;
