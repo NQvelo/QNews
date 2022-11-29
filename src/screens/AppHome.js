@@ -10,10 +10,8 @@ import {
   Pressable,
 } from 'react-native';
 
-import SearchInput from '../components/SearchInput';
 import Loader from '../components/Loader';
-
-import {lightFormat} from 'date-fns';
+import {format} from 'date-fns';
 
 import Feather from 'react-native-vector-icons/Feather';
 
@@ -67,7 +65,6 @@ const AppHome = ({navigation}) => {
           ListHeaderComponent={() => {
             return (
               <View style={{marginVertical: 10}}>
-                <SearchInput />
                 <Pressable
                   style={styles.mainBox}
                   onPress={() => navigation.navigate('statia', firstOne)}>
@@ -125,13 +122,13 @@ const AppHome = ({navigation}) => {
                               {item.title}
                             </Text>
                           </View>
-                          {/* <View style={{ backgroundColor: 'red', width: 20, height: 20, borderRadius: 50, }}>
-              
-               </View> */}
                         </View>
                       </TouchableOpacity>
                     )}
                   />
+                  <View style={styles.AllNewsView}>
+                    <Text style={[styles.AllNewsText]}>All News</Text>
+                  </View>
                 </View>
               </View>
             );
@@ -151,28 +148,21 @@ const AppHome = ({navigation}) => {
                 />
                 <View style={styles.itemView}>
                   <View style={{flexDirection: 'row'}}>
-                    <View style={{flexDirection: 'row', width: 130}}>
+                    <View style={{flexDirection: 'row', width: 100}}>
                       <Feather name="feather" size={15} color="grey" />
-                      {/* <View style={{backgroundColor:'black', width:15, height:15, borderRadius:10,}}/> */}
                       <Text numberOfLines={1} style={styles.authorText}>
                         {item.author == null ? (
-                          <Text> No Writer</Text>
+                          <Text> Unknown</Text>
                         ) : (
-                          <>
-                            {item.author == null ? (
-                              <Text>No Writer</Text>
-                            ) : (
-                              <>{item.author}</>
-                            )}
-                            {item.author}
-                          </>
+                          <> {item.author}</>
                         )}
+                        {item.author}
                       </Text>
                     </View>
                     <View style={{flexDirection: 'row', marginLeft: 30}}>
                       <Feather name="calendar" size={15} color="grey" />
                       <Text numberOfLines={1} style={styles.authordate}>
-                        {item.result}
+                        {format(new Date(item.publishedAt), 'MM.dd.yyyy')}
                       </Text>
                     </View>
                   </View>
@@ -198,7 +188,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 1,
     borderColor: '#eaeaea',
-    marginTop: 30,
   },
   mainStyle: {
     paddingHorizontal: 15,
@@ -238,6 +227,16 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     color: '#ec5514',
   },
+  AllNewsView: {
+    marginTop: 30,
+  },
+  AllNewsText: {
+    fontSize: 23,
+    fontWeight: '600',
+    marginLeft: 10,
+    color: 'Black',
+  },
+
   FNewsTxtsec: {
     fontSize: 23,
     fontWeight: '600',

@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  SafeAreaView,
 } from 'react-native';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -16,7 +17,7 @@ function SearchInput() {
   const [searchInput, setSearchInput] = useState();
 
   return (
-    <View>
+    <View style={{marginHorizontal: 10}}>
       <View style={styles.textInputHeader}>
         <View
           style={{
@@ -28,6 +29,7 @@ function SearchInput() {
           <Feather name="search" size={23} color="black" />
         </View>
         <TextInput
+          returnKeyType="search"
           value={searchInput}
           onChangeText={setSearchInput}
           fontSize={15}

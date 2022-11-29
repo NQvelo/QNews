@@ -38,8 +38,11 @@ const StatiaPage = ({route, navigation}) => {
           // eslint-disable-next-line react-native/no-inline-styles
           style={{height: 230, borderRadius: 10}}
         />
-        <Text style={styles.title}>{listing.title}</Text>
-        <Text style={styles.desc}>{listing.content}</Text>
+        <View style={styles.allTextContent}>
+          <Text style={styles.writerName}>By: {listing.source.name}</Text>
+          <Text style={styles.title}>{listing.title}</Text>
+          <Text style={styles.desc}>{listing.content}</Text>
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -52,11 +55,16 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
   },
-
+  allTextContent: {
+    marginTop: 20,
+  },
   title: {
     marginTop: 15,
     fontSize: 18,
     fontWeight: '500',
+  },
+  writerName: {
+    fontSize: 14,
   },
   desc: {
     marginTop: 20,

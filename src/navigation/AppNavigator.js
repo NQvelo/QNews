@@ -1,11 +1,11 @@
 /* eslint-disable react/react-in-jsx-scope */
 import * as reactNative from 'react-native';
-
 import AppHome from '../screens/AppHome';
 import Discover from '../screens/Discover';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {SafeAreaView} from 'react-native-safe-area-context';
 
 const Tab = createBottomTabNavigator();
 
@@ -85,6 +85,11 @@ const AppNavigator = () => {
           tabBarIcon: ({size, color}) => (
             <Ionicons name="compass" size={20} color="grey" />
           ),
+          headerShown: true,
+          header: () => (
+            <reactNative.SafeAreaView
+              style={{backgroundColor: 'white'}}></reactNative.SafeAreaView>
+          ),
         }}
       />
 
@@ -93,7 +98,9 @@ const AppNavigator = () => {
         component={AppHome}
         options={{
           tabBarIcon: ({size, color}) => (
-            <Ionicons name="bookmark" size={20} color="grey" />
+            <reactNative.SafeAreaView style={{backgroundColor: 'white'}}>
+              <Ionicons name="bookmark" size={20} color="grey" />
+            </reactNative.SafeAreaView>
           ),
         }}
       />
