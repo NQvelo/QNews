@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>749460682598-v3e574vu9h4i1hrqim55io0n7l57ee0c.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.749460682598-v3e574vu9h4i1hrqim55io0n7l57ee0c</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBh4rsBUqnNDM-EDRuaemZlOFPIUqSxzdA</string>
+	<key>GCM_SENDER_ID</key>
+	<string>749460682598</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>org.reactjs.native.example.QNews</string>
+	<key>PROJECT_ID</key>
+	<string>qnews-auth</string>
+	<key>STORAGE_BUCKET</key>
+	<string>qnews-auth.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:749460682598:ios:e22e75ccca67c8d14d7aa7</string>
+</dict>
+</plist>

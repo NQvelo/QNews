@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "749460682598",
+    "project_id": "qnews-auth",
+    "storage_bucket": "qnews-auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:749460682598:android:3d771b54f8fe5c9c4d7aa7",
+        "android_client_info": {
+          "package_name": "com.Qnews"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "749460682598-ms5irn37o9v37meombcirhsdm9ejuis1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxrWuVHadAByh_xfSMbqtZsTUfh3a41sU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "749460682598-ms5irn37o9v37meombcirhsdm9ejuis1.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "749460682598-ct6kdpgue5314u67pqekgrpn8r58gnb2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.Qnews"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

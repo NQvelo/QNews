@@ -1,19 +1,9 @@
-import React, {useState} from 'react';
-import {
-  View,
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  Image,
-  SafeAreaView,
-} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, StyleSheet, TextInput, Text} from 'react-native';
 
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Entypo from 'react-native-vector-icons/Entypo';
 import Feather from 'react-native-vector-icons/Feather';
 
-function SearchInput() {
+function SearchInput({onchange}) {
   const [searchInput, setSearchInput] = useState();
 
   return (
@@ -29,9 +19,9 @@ function SearchInput() {
           <Feather name="search" size={23} color="black" />
         </View>
         <TextInput
+          onChangeText={setSearchInput}
           returnKeyType="search"
           value={searchInput}
-          onChangeText={setSearchInput}
           fontSize={15}
           placeholder="Search Here"
         />

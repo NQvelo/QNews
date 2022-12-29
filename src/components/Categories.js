@@ -3,12 +3,12 @@ import {View, StyleSheet, ScrollView} from 'react-native';
 
 import CategoriesView from './CategoriesView';
 
-const Categories = ({navigation}) => {
+const Categories = ({navigation, onPressone, onPresstwo}) => {
   return (
     <View style={styles.mainView}>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <CategoriesView icon={'globe'} text={'world'} />
-        <CategoriesView icon={'sun'} text={'Weather'} />
+        <CategoriesView icon={'globe'} text={'world'} onPress={onPressone} />
+        <CategoriesView icon={'sun'} text={'Weather'} onPress={onPresstwo} />
         <CategoriesView icon={'code'} text={'Programming'} />
         <CategoriesView icon={'play'} text={'videos'} />
         <CategoriesView icon={'airplay'} text={'Games'} />
@@ -19,8 +19,6 @@ const Categories = ({navigation}) => {
 const styles = StyleSheet.create({
   mainView: {
     marginLeft: 6,
-    marginVertical: 10,
-    // backgroundColor: 'green',
     padding: 10,
     width: '100%',
     height: 60,

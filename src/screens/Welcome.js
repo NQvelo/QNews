@@ -2,6 +2,7 @@ import React from 'react';
 import {View, StyleSheet, Text} from 'react-native';
 import AppButton from '../components/AppButton';
 
+import Screen from '../components/Screen';
 function Welcome({navigation}) {
   return (
     <View style={styles.container}>
@@ -21,7 +22,11 @@ function Welcome({navigation}) {
           style={styles.loginButton}
           onPress={() => navigation.navigate('home')}
         />
-        <AppButton title="REGISTER" style={styles.RegButton} onPress={null} />
+        <AppButton
+          title="REGISTER"
+          style={styles.RegButton}
+          onPress={() => navigation.navigate('Login')}
+        />
       </View>
       {/* </ImageBackground> */}
     </View>
@@ -34,6 +39,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
+    paddingHorizontal: 20,
     width: '100%',
     height: '100%',
     flex: 1,
@@ -42,9 +48,11 @@ const styles = StyleSheet.create({
   },
   loginButton: {
     backgroundColor: 'black',
+    justifyContent: 'center',
     color: 'white',
   },
   RegButton: {
+    justifyContent: 'center',
     marginTop: 10,
   },
 });

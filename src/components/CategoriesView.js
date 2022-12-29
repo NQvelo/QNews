@@ -2,9 +2,9 @@ import React from 'react';
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 
-function CategoriesView({icon, text}) {
+function CategoriesView({icon, text, onPress}) {
   return (
-    <TouchableOpacity style={styles.categoryItem}>
+    <TouchableOpacity style={styles.categoryItem} onPress={onPress}>
       <Feather name={icon} size={15} color="grey" />
       <Text style={{marginLeft: 7}}>{text}</Text>
     </TouchableOpacity>

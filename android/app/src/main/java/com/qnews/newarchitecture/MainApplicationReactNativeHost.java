@@ -19,7 +19,7 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.fabric.ReactNativeConfig;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.qnews.BuildConfig;
+// import com.qnews.BuildConfig;
 import com.qnews.newarchitecture.components.MainComponentsRegistry;
 import com.qnews.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;

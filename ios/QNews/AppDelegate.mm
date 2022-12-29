@@ -5,6 +5,8 @@
 #import <React/RCTRootView.h>
 
 #import <React/RCTAppSetupUtils.h>
+#import <Firebase.h>
+
 
 #if RCT_NEW_ARCH_ENABLED
 #import <React/CoreModulesPlugins.h>
@@ -15,6 +17,7 @@
 #import <ReactCommon/RCTTurboModuleManager.h>
 
 #import <react/config/ReactNativeConfig.h>
+
 
 static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 
@@ -31,6 +34,7 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+   
   RCTAppSetupPrepareApp(application);
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
@@ -50,6 +54,10 @@ static NSString *const kRNConcurrentRoot = @"concurrentRoot";
     rootView.backgroundColor = [UIColor systemBackgroundColor];
   } else {
     rootView.backgroundColor = [UIColor whiteColor];
+  }
+
+  if ([FIRApp defaultApp] == nil) {
+    [FIRApp configure];
   }
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];

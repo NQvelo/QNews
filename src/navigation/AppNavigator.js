@@ -1,7 +1,9 @@
 /* eslint-disable react/react-in-jsx-scope */
-import * as reactNative from 'react-native';
+import {TouchableOpacity, Text, Image, View, StyleSheet} from 'react-native';
 import AppHome from '../screens/AppHome';
 import Discover from '../screens/Discover';
+import SearchInput from '../components/SearchInput';
+
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -20,45 +22,44 @@ const AppNavigator = () => {
 
           headerShown: true,
           header: () => (
-            <reactNative.SafeAreaView style={{backgroundColor: 'white'}}>
-              <reactNative.View
+            <SafeAreaView style={{backgroundColor: 'white', height: 120}}>
+              <View
                 // eslint-disable-next-line react-native/no-inline-styles
                 style={{
                   flexDirection: 'row',
                   paddingHorizontal: 20,
                   justifyContent: 'space-between',
                 }}>
-                <reactNative.TouchableOpacity>
-                  <reactNative.View
-                    style={{flexDirection: 'row', paddingVertical: 8}}>
-                    <reactNative.Image
+                <TouchableOpacity>
+                  <View style={{flexDirection: 'row', paddingVertical: 8}}>
+                    <Image
                       source={require('../assets/download.png')}
                       style={styles.profImage}
                     />
-                    <reactNative.View style={{marginLeft: 10}}>
-                      <reactNative.Text
+                    <View style={{marginLeft: 10}}>
+                      <Text
                         style={{
                           fontSize: 15,
                           fontWeight: '400',
                           color: 'grey',
                         }}>
                         Welcome Back!
-                      </reactNative.Text>
-                      <reactNative.Text
+                      </Text>
+                      <Text
                         style={{
                           fontSize: 20,
                           fontWeight: '600',
                           color: 'black',
                         }}>
                         Qvelo
-                      </reactNative.Text>
-                    </reactNative.View>
-                  </reactNative.View>
-                </reactNative.TouchableOpacity>
+                      </Text>
+                    </View>
+                  </View>
+                </TouchableOpacity>
 
-                <reactNative.TouchableOpacity
+                <TouchableOpacity
                   style={{flexDirection: 'column', justifyContent: 'center'}}>
-                  <reactNative.View
+                  <View
                     style={{
                       borderWidth: 1,
                       borderRadius: 50,
@@ -70,10 +71,10 @@ const AppNavigator = () => {
                       size={22}
                       color="black"
                     />
-                  </reactNative.View>
-                </reactNative.TouchableOpacity>
-              </reactNative.View>
-            </reactNative.SafeAreaView>
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </SafeAreaView>
           ),
         }}
       />
@@ -87,8 +88,9 @@ const AppNavigator = () => {
           ),
           headerShown: true,
           header: () => (
-            <reactNative.SafeAreaView
-              style={{backgroundColor: 'white'}}></reactNative.SafeAreaView>
+            <SafeAreaView style={{backgroundColor: 'white', height: 120}}>
+              <SearchInput onchange={console.log('cdcdc')} />
+            </SafeAreaView>
           ),
         }}
       />
@@ -98,9 +100,7 @@ const AppNavigator = () => {
         component={AppHome}
         options={{
           tabBarIcon: ({size, color}) => (
-            <reactNative.SafeAreaView style={{backgroundColor: 'white'}}>
-              <Ionicons name="bookmark" size={20} color="grey" />
-            </reactNative.SafeAreaView>
+            <Ionicons name="bookmark" size={20} color="grey" />
           ),
         }}
       />
@@ -108,7 +108,7 @@ const AppNavigator = () => {
   );
 };
 
-const styles = reactNative.StyleSheet.create({
+const styles = StyleSheet.create({
   profImage: {
     width: 45,
     height: 45,

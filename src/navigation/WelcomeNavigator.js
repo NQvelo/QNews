@@ -7,6 +7,7 @@ import AppNavigator from './AppNavigator';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import StatiaPage from '../screens/StatiaPage';
 import HeaderButton from '../components/HeaderButton';
+import Login from '../registration/Login';
 
 const Stack = createNativeStackNavigator();
 
@@ -15,6 +16,11 @@ const WelcomeNavigator = () => (
     <Stack.Screen
       name="welcome"
       component={Welcome}
+      options={{headerShown: false}}
+    />
+    <Stack.Screen
+      name="Login"
+      component={Login}
       options={{headerShown: false}}
     />
     <Stack.Screen
@@ -33,6 +39,7 @@ const WelcomeNavigator = () => (
         headerRight: () => {
           return (
             <View
+              // eslint-disable-next-line react-native/no-inline-styles
               style={{
                 flexDirection: 'row',
                 justifyContent: 'space-around',
